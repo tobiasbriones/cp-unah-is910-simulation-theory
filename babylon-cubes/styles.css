@@ -6,3 +6,21 @@
  * and is licensed under the MIT License found in the LICENSE file in the root
  * directory of this source tree or at https://opensource.org/licenses/MIT
  */
+
+* {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+canvas {
+  width: 80%;
+  margin: 3% auto;
+  display: block;
+}
