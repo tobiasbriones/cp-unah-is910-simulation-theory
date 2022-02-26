@@ -6,3 +6,8 @@
 // licensed under the MIT License found in the LICENSE file in the root
 // directory of this source tree or at https://opensource.org/licenses/MIT
 
+document.addEventListener("DOMContentLoaded", init);
+
+function init() {
+  const canvasEl = document.getElementById("canvas");
+}
