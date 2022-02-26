@@ -20,9 +20,17 @@ function Main() {
   let engine;
   let scene;
   let camera;
-  const initCamera = () => {
+  const initCamera = (canvasEl) => {
     camera.setTarget(BABYLON.Vector3.Zero());
-    camera.attachControl(canvas, false);
+    camera.attachControl(canvasEl, true);
+  };
+  const initLight = () => {
+    const light = new BABYLON.HemisphericLight(
+      'light1',
+      new BABYLON.Vector3(0, 1, 0),
+      scene
+    );
+    light.groundColor = new BABYLON.Color3(0.4, 0.4, 0.4);
   };
   const runRenderLoop = () => {
     engine.runRenderLoop(() => {
@@ -34,9 +42,10 @@ function Main() {
     init: (canvasEl) => {
       engine = newEngine(canvasEl);
       scene = newScene(engine);
-      camera = newCamera(scene);
+      camera = newCamera(scene, canvasEl);
 
-      initCamera();
+      initCamera(canvasEl);
+      initLight();
       runRenderLoop();
 
       window.addEventListener('resize', () => {
@@ -44,29 +53,8 @@ function Main() {
       });
     },
     draw() {
-      // Sample scene I copied from internet for PoC //
+      const box1 = newBox(scene, 'box1');
 
-      // Create a basic light, aiming 0, 1, 0 - meaning, to the sky
-      const light = new BABYLON.HemisphericLight(
-        'light1',
-        new BABYLON.Vector3(0, 1, 0),
-        scene
-      );
-      // Create a built-in "sphere" shape; its constructor takes 6 params:
-      // name, segment, diameter, scene, updatable, sideOrientation
-      const sphere = BABYLON.Mesh.CreateSphere(
-        'sphere1',
-        16,
-        2,
-        scene,
-        false,
-        BABYLON.Mesh.FRONTSIDE
-      );
-      // Move the sphere upward 1/2 of its height
-      sphere.position.y = 1;
-      // Create a built-in "ground" shape; its constructor takes 6 params :
-      // name, width, height, subdivision, scene, updatable
-      BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
     }
   };
 }
@@ -78,14 +66,51 @@ function newEngine(canvasEl) {
   });
 }
 
-function newCamera(scene) {
-  return new BABYLON.FreeCamera(
+function newCamera(scene, canvasEl) {
+  return new BABYLON.ArcRotateCamera(
     'camera1',
-    new BABYLON.Vector3(0, 5, -10),
+    -Math.PI / 2,
+    1.2,
+    300,
+    new BABYLON.Vector3(0, 0, 0),
     scene
   );
 }
 
 function newScene(engine) {
   return new BABYLON.Scene(engine);
+}
+
+function newBox(scene, name) {
+  const size = 50;
+  const gizmo = BABYLON.Mesh.CreateBox(name, 10, scene, true);
+  const addEdges = i => {
+    gizmo.slaves[i].enableEdgesRendering();
+    gizmo.slaves[i].edgesWidth = 25.0;
+    gizmo.slaves[i].edgesColor = new BABYLON.Color4(0, 0, 0, 1);
+  };
+
+  gizmo.isPickable = false;
+  gizmo.slaves = [];
+  for (let i = 0; i < 6; i++) {
+    gizmo.slaves[i] = BABYLON.Mesh.CreatePlane(name + i, size, scene, true);
+    gizmo.slaves[i].parent = gizmo;
+    addEdges(i);
+    gizmo.slaves[i].material = new BABYLON.StandardMaterial('mat', scene);
+    gizmo.slaves[i].material.diffuseColor = BABYLON.Color3.Random();
+    gizmo.slaves[i].material.alpha = 1;
+  }
+  gizmo.slaves[0].position = new BABYLON.Vector3(-size / 2, 0, 0);
+  gizmo.slaves[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+  gizmo.slaves[1].position = new BABYLON.Vector3(0, 0, size / 2);
+  gizmo.slaves[1].rotation = new BABYLON.Vector3(0, Math.PI, 0);
+  gizmo.slaves[2].position = new BABYLON.Vector3(size / 2, 0, 0);
+  gizmo.slaves[2].rotation = new BABYLON.Vector3(0, -Math.PI / 2, 0);
+  gizmo.slaves[3].position = new BABYLON.Vector3(0, size / 2, 0);
+  gizmo.slaves[3].rotation = new BABYLON.Vector3(Math.PI / 2, 0, 0);
+  gizmo.slaves[4].position = new BABYLON.Vector3(0, -size / 2, 0);
+  gizmo.slaves[4].rotation = new BABYLON.Vector3(-Math.PI / 2, 0, 0);
+  gizmo.slaves[5].position = new BABYLON.Vector3(0, 0, -size / 2);
+  gizmo.slaves[5].rotation = new BABYLON.Vector3(0, 0, 0);
+  return gizmo;
 }
