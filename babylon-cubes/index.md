@@ -289,7 +289,7 @@ return {
     runRenderLoop();
 
     window.addEventListener('resize', () => {
-      engine.reBOX_SIZE();
+      engine.resize();
     });
   },
   draw() {
