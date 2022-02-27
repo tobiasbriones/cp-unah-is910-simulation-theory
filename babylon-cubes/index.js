@@ -8,6 +8,8 @@
 
 document.addEventListener('DOMContentLoaded', init);
 
+const BOX_SIZE = 50;
+
 function init() {
   const canvasEl = document.getElementById('canvas');
   const main = Main();
@@ -48,13 +50,15 @@ function Main() {
       initLight();
       runRenderLoop();
 
-      window.addEventListener('resize', () => {
-        engine.resize();
+      window.addEventListener('reBOX_SIZE', () => {
+        engine.reBOX_SIZE();
       });
     },
     draw() {
-      const box1 = newBox(scene, 'box1');
-
+      newBox(scene, 'box1', { x: 0, y: 0, z: 0 });
+      newBox(scene, 'box2', { x: 0, y: BOX_SIZE, z: BOX_SIZE });
+      newBox(scene, 'box3', { x: BOX_SIZE, y: 0, z: BOX_SIZE });
+      newBox(scene, 'box4', { x: BOX_SIZE, y: BOX_SIZE, z: BOX_SIZE * 2 });
     }
   };
 }
@@ -66,7 +70,7 @@ function newEngine(canvasEl) {
   });
 }
 
-function newCamera(scene, canvasEl) {
+function newCamera(scene) {
   return new BABYLON.ArcRotateCamera(
     'camera1',
     -Math.PI / 2,
@@ -81,8 +85,8 @@ function newScene(engine) {
   return new BABYLON.Scene(engine);
 }
 
-function newBox(scene, name) {
-  const size = 50;
+function newBox(scene, name, pos) {
+  const BOX_SIZE = 50;
   const gizmo = BABYLON.Mesh.CreateBox(name, 10, scene, true);
   const addEdges = i => {
     gizmo.slaves[i].enableEdgesRendering();
@@ -93,24 +97,48 @@ function newBox(scene, name) {
   gizmo.isPickable = false;
   gizmo.slaves = [];
   for (let i = 0; i < 6; i++) {
-    gizmo.slaves[i] = BABYLON.Mesh.CreatePlane(name + i, size, scene, true);
+    gizmo.slaves[i] = BABYLON.Mesh.CreatePlane(name + i, BOX_SIZE, scene, true);
     gizmo.slaves[i].parent = gizmo;
     addEdges(i);
     gizmo.slaves[i].material = new BABYLON.StandardMaterial('mat', scene);
     gizmo.slaves[i].material.diffuseColor = BABYLON.Color3.Random();
     gizmo.slaves[i].material.alpha = 1;
   }
-  gizmo.slaves[0].position = new BABYLON.Vector3(-size / 2, 0, 0);
+  gizmo.slaves[0].position = new BABYLON.Vector3(
+    pos.x - BOX_SIZE / 2,
+    pos.y,
+    pos.z
+  );
   gizmo.slaves[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
-  gizmo.slaves[1].position = new BABYLON.Vector3(0, 0, size / 2);
+  gizmo.slaves[1].position = new BABYLON.Vector3(
+    pos.x,
+    pos.y,
+    pos.z + BOX_SIZE / 2
+  );
   gizmo.slaves[1].rotation = new BABYLON.Vector3(0, Math.PI, 0);
-  gizmo.slaves[2].position = new BABYLON.Vector3(size / 2, 0, 0);
+  gizmo.slaves[2].position = new BABYLON.Vector3(
+    pos.x + BOX_SIZE / 2,
+    pos.y,
+    pos.z
+  );
   gizmo.slaves[2].rotation = new BABYLON.Vector3(0, -Math.PI / 2, 0);
-  gizmo.slaves[3].position = new BABYLON.Vector3(0, size / 2, 0);
+  gizmo.slaves[3].position = new BABYLON.Vector3(
+    pos.x,
+    pos.y + BOX_SIZE / 2,
+    pos.z
+  );
   gizmo.slaves[3].rotation = new BABYLON.Vector3(Math.PI / 2, 0, 0);
-  gizmo.slaves[4].position = new BABYLON.Vector3(0, -size / 2, 0);
+  gizmo.slaves[4].position = new BABYLON.Vector3(
+    pos.x,
+    pos.y - BOX_SIZE / 2,
+    pos.z
+  );
   gizmo.slaves[4].rotation = new BABYLON.Vector3(-Math.PI / 2, 0, 0);
-  gizmo.slaves[5].position = new BABYLON.Vector3(0, 0, -size / 2);
+  gizmo.slaves[5].position = new BABYLON.Vector3(
+    pos.x,
+    pos.y,
+    pos.z - BOX_SIZE / 2
+  );
   gizmo.slaves[5].rotation = new BABYLON.Vector3(0, 0, 0);
   return gizmo;
 }
