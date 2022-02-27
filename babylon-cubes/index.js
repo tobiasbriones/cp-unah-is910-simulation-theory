@@ -86,7 +86,6 @@ function newScene(engine) {
 }
 
 function newBox(scene, name, pos) {
-  const BOX_SIZE = 50;
   const gizmo = BABYLON.Mesh.CreateBox(name, 10, scene, true);
   const addEdges = i => {
     gizmo.slaves[i].enableEdgesRendering();
