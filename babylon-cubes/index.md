@@ -15,6 +15,8 @@ models so that they can be rendered into a virtual canvas and be interactive. In
 order to achieve this result on the internet browser using web technology like
 HTML and JS, a library called Babylon.js can be used.
 
+A final result can be run at the [demo page](demo).
+
 ## Development
 
 The development consists about adding the Babylon.js library and creating a
