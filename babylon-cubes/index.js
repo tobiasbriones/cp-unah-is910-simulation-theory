@@ -50,8 +50,8 @@ function Main() {
       initLight();
       runRenderLoop();
 
-      window.addEventListener('reBOX_SIZE', () => {
-        engine.reBOX_SIZE();
+      window.addEventListener('resize', () => {
+        engine.resize();
       });
     },
     draw() {
