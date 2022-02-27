@@ -1,6 +1,6 @@
 # Course Project at UNAH-IS910: Simulation Theory
 
-Simulation Theory Course Project's own works.
+Own works for the Simulation Theory Course Project.
 
 ## Index
 
@@ -10,7 +10,7 @@ Simulation Theory Course Project's own works.
 
 **Course Project at UNAH-IS910: Simulation Theory**
 
-Simulation Theory Course Project's own works.
+Own works for the Simulation Theory Course Project.
 
 Copyright © 2022 Tobias Briones. All rights reserved.
 
