@@ -319,6 +319,10 @@ newBox(scene, 'box4', { x: BOX_SIZE, y: BOX_SIZE, z: BOX_SIZE * 2 });
 
 ## Conclusion
 
+The Babylon.js library was used to render cubes with coordinates on the HTML
+Canvas Element. As an introduction, a basic scene was developed and then the box
+model was developed to build a cube from scratch from its 6 faces.
+
 ## Bibliography
 
 - [Welcome to Getting Started with Babylon.js | Babylon.js Documentation](https://doc.babylonjs.com/start)
