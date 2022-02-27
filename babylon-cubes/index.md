@@ -1,16 +1,16 @@
 # Babylon Cubes
 
-In this article, a brief introduction to Babylon.js is given to render cubes 
+In this article, a brief introduction to Babylon.js is given to render cubes
 into a web page.
 
 ## Introduction
 
-Computer simulations are an innovative technology in this era. They can help to
+Computer simulations are innovative technology in this era. They can help to
 visualize industrial processes, real-time processes, running scientific
-experiments and, many more.
+experiments, and many more.
 
 Computer graphics either 2D or 3D are fundamental to computer simulations so one
-can see real life looking results. This leads to the development of say, 3D
+can see real-life-looking results. This leads to the development of say, 3D
 models so that they can be rendered into a virtual canvas and be interactive. In
 order to achieve this result on the internet browser using web technology like
 HTML and JS, a library called Babylon.js can be used.
