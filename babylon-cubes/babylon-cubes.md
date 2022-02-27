@@ -1,5 +1,8 @@
 # Babylon Cubes
 
+In this article, a brief introduction to Babylon.js is given to render cubes 
+into a web page.
+
 ## Introduction
 
 Computer simulations are an innovative technology in this era. They can help to
