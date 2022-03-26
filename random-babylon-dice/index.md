@@ -124,5 +124,5 @@ generate random dices instead of just generating the same dice every time.
 
 ## Bibliography
 
-- https://playground.babylonjs.com/#6XIT28#5
-- https://www.giantbomb.com/sprite/3015-491
+- [Box examples \| Babylon.js Playground](https://playground.babylonjs.com/#6XIT28#5)
+- [Sprite (Concept) \| Giant Bomb](https://www.giantbomb.com/sprite/3015-491)
