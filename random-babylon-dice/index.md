@@ -1,8 +1,20 @@
+---
+description: A basic way of generating random dices on Babylon.js on the playground is given.
+ogimage: https://raw.githubusercontent.com/tobiasbriones/cp-unah-is910-simulation-theory/gh-pages/random-babylon-dice/def-example-dice.png
+---
+
 # Random Babylon Dice
 
 A basic way of generating random dices on Babylon.js on the playground is given.
 
-## Introduction
+- [Random Babylon Dice](#random-babylon-dice)
+    * [Introduction](#introduction)
+    * [Analysis of the Problem](#analysis-of-the-problem)
+    * [Solution](#solution)
+    * [Conclusion](#conclusion)
+    * [Bibliography](#bibliography)
+
+ ## Introduction
 
 If you go to [this playground](https://playground.babylonjs.com/#6XIT28#5)
 you will find similar code like the following:
