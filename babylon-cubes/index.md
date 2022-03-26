@@ -330,6 +330,6 @@ model was developed to build a cube from scratch from its 6 faces.
 
 ## Bibliography
 
-- [Welcome to Getting Started with Babylon.js &#124; Babylon.js Documentation](https://doc.babylonjs.com/start)
+- [Welcome to Getting Started with Babylon.js \| Babylon.js Documentation](https://doc.babylonjs.com/start)
 
-- [Parametric extrusion edges &#124; Babylon.js Playground](https://www.babylonjs-playground.com/#TYAHX#123)
+- [Parametric extrusion edges \| Babylon.js Playground](https://www.babylonjs-playground.com/#TYAHX#123)
