@@ -113,7 +113,7 @@ well for solving memory issues.
 This problem can be solved with several variants, and it's up to you, but for
 this basic problem any of these is valid.
 
-When you run the code several times, a new arranged dice is obtained:
+When you run the code several times, a new randomly-arranged dice is obtained:
 
 ![Result](result.png)
 
