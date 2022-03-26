@@ -74,4 +74,45 @@ sheet with the numbers from 1 to 6 used to take each side of the cube is given
 on the texture member. Next, in the for loop we select a sprite from the texture
 to set it as a side of the dice. Thus, the only thing we'll do is to make that
 selection arbitrary. Moreover, we need to make sure to select a unique random
-face each time until we finish all the dice sides. 
+face each time until we finish all the dice sides.
+
+## Solution
+
+Just add the following code to update your scene:
+
+```js
+const generatedNumbers = [];
+const getUniqueNumber = () => {
+  const number = Math.floor((Math.random() * 6) + 1);
+  if (!generatedNumbers.includes(number)) {
+    generatedNumbers.push(number);
+    return number;
+  }
+  else if (generatedNumbers.length < 6) {
+    return getUniqueNumber();
+  }
+}
+
+for (let i = 0; i < 6; i++) {
+  const j = getUniqueNumber();
+  faceUV[i] = new BABYLON.Vector4(j / columns, 0, (j + 1) / columns, 1 / rows);
+}
+```
+
+It consists of a simple ad-hoc implementation to generate random numbers from 1
+to 6 inclusive.
+
+The numbers that are being generated are stored in the `generatedNumbers`
+array (which could be a Set for better performance). Then the function
+`getUniqueNumber` generates a random number in the required closed-interval that
+shall be unique.
+
+Notice the use of recursion by this function, it might be an imperative loop as
+well and for memory issues.
+
+This problem can be solved with several variants, and it's up to you, but for
+this basic problem any of these is valid.
+
+When you run the code several times, a new arranged dice is obtained:
+
+![Result](result.png)
