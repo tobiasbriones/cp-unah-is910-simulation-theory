@@ -116,3 +116,8 @@ this basic problem any of these is valid.
 When you run the code several times, a new arranged dice is obtained:
 
 ![Result](result.png)
+
+## Conclusion
+
+Code was added to the default given Babylon.js playground example to 
+generate random dices instead of the same dice every time.
