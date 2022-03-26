@@ -120,7 +120,7 @@ When you run the code several times, a new randomly-arranged dice is obtained:
 ## Conclusion
 
 Code was added to the default given Babylon.js playground example to 
-generate random dices instead of the same dice every time.
+generate random dices instead of just generating the same dice every time.
 
 ## Bibliography
 
