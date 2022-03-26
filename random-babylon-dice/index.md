@@ -14,7 +14,7 @@ A basic way of generating random dices on Babylon.js on the playground is given.
     * [Conclusion](#conclusion)
     * [Bibliography](#bibliography)
 
- ## Introduction
+## Introduction
 
 If you go to [this playground](https://playground.babylonjs.com/#6XIT28#5)
 you will find similar code like the following:
