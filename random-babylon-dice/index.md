@@ -108,7 +108,7 @@ array (which could be a Set for better performance). Then the function
 shall be unique.
 
 Notice the use of recursion by this function, it might be an imperative loop as
-well and for memory issues.
+well for solving memory issues.
 
 This problem can be solved with several variants, and it's up to you, but for
 this basic problem any of these is valid.
