@@ -121,3 +121,8 @@ When you run the code several times, a new arranged dice is obtained:
 
 Code was added to the default given Babylon.js playground example to 
 generate random dices instead of the same dice every time.
+
+## Bibliography
+
+- https://playground.babylonjs.com/#6XIT28#5
+- https://www.giantbomb.com/sprite/3015-491
