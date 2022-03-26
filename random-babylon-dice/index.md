@@ -7,6 +7,8 @@ ogimage: https://raw.githubusercontent.com/tobiasbriones/cp-unah-is910-simulatio
 
 A basic way of generating random dices on Babylon.js on the playground is given.
 
+## Contents
+
 - [Random Babylon Dice](#random-babylon-dice)
     * [Introduction](#introduction)
     * [Analysis of the Problem](#analysis-of-the-problem)
