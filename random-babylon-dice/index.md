@@ -62,3 +62,16 @@ This yields a scene that looks like this:
 The dice is exactly the same each time you run the code.
 
 The little challenge is to generate a random dice when creating it.
+
+## Analysis of the Problem
+
+First, there's the code to set up the scene which is finished in the end by
+adding the implementation of the cube or dice. That's the scene that is rendered
+on the screen.
+
+Then there's the other section to generate the dice. Notice that, the sprite
+sheet with the numbers from 1 to 6 used to take each side of the cube is given
+on the texture member. Next, in the for loop we select a sprite from the texture
+to set it as a side of the dice. Thus, the only thing we'll do is to make that
+selection arbitrary. Moreover, we need to make sure to select a unique random
+face each time until we finish all the dice sides. 
