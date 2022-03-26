@@ -5,6 +5,7 @@ Own works for the Simulation Theory Course Project.
 ## Index
 
 - [Babylon Cubes](babylon-cubes)
+- [Random Babylon Dice](random-babylon-dice)
 
 ## About
 
