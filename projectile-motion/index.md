@@ -203,12 +203,13 @@ function newAxes(scene) {
 }
 ```
 
-The `line2D` function comes from the `lib.js` file that was added to the 
-project from the [Babylon.js Docs](https://doc.babylonjs.com/toolsAndResources/utilities/Line2D).
+The `line2D` function comes from the `lib.js` file that was added to the project
+from the
+[Babylon.js Docs](https://doc.babylonjs.com/toolsAndResources/utilities/Line2D).
 
 ### Draw the Curve
 
-This will draw the positive side of the curve as a dashed curve using sloped 
+This will draw the positive side of the curve as a dashed curve using sloped
 lines.
 
 First, define the function:
@@ -228,26 +229,56 @@ Now, add the following logic:
 ```js
 function newCurve(scene) {
   // Domain from 0 to 4
-  const xyMax = 4;
   const steps = 40;
   const axisStep = WIDTH / steps;
-  const toDomain = (i) => (i / WIDTH) * xyMax;
-  const toPixels = (w) => (w * WIDTH) / xyMax;
 
   for (let i = 0; i < WIDTH; i += axisStep) {
-    const x = toDomain(i);
-    const y = evalFn(x);
-    const xEnd = toDomain(i + axisStep / 2);
-    const yEnd = evalFn(xEnd);
+    const t = toDomain(i);
+    const y = evalFn(t);
+    const tEnd = toDomain(i + axisStep / 2);
+    const yEnd = evalFn(tEnd);
 
-    line2D(`step-${i}`, {
+    line2D(`step-${ i }`, {
       path: [
         new BABYLON.Vector3(OX + i, OY + toPixels(y), 0),
-        new BABYLON.Vector3(OX + toPixels(xEnd), OY + toPixels(yEnd), 0),
+        new BABYLON.Vector3(OX + toPixels(tEnd), OY + toPixels(yEnd), 0)
       ],
       width: 0.5,
-      scene,
+      scene
     });
   }
 }
 ```
+
+**index.js `Add map functions`**
+
+```js
+function toDomain(i) {
+  return (i / WIDTH) * TY_MAX;
+}
+
+function toPixels(w) {
+  return (w / TY_MAX) * WIDTH;
+}
+```
+
+Also add this constant to define the logical domain of the function that is
+going to be graphed:
+
+```js
+const TY_MAX = 4;
+```
+
+Then update the drawing logic in the `Main` function to call this function. The
+result is the following:
+
+![Draw Curve](draw-curve.png)
+
+The domain is taken as $$ t \in [0, 4] $$, the mapper functions are used to
+convert pixels to domain values and viceversa.
+
+Then a number of steps is given to add more or less slopes to the curve,
+allowing to graph each secant from the points $$ (t, f(t)), (t + step / 2, f
+(t + step / 2)) $$. These field can be the tangent line at $$ t $$ too, but that
+doesn't matter much for this exercise. The lines will be more details as more
+steps are taken.
