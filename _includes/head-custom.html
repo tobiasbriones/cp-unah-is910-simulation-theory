@@ -11,3 +11,14 @@
 {% if page.description %}<meta property="og:description" content="{{ page.description }}" />{% endif %}
 {% if page.ogimage %}<meta property="og:image" content="{{ page.ogimage }}" />{% endif %}
 {% if page.ogimage %}<meta property="twitter:image" content="{{ page.ogimage }}" />{% endif %}
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
