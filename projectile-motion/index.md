@@ -52,7 +52,7 @@ Clearly, the curve intercepts at the origin, and the maximum point is at
 $$t=2$$. The other axis interception is at $$t = 4$$, so our curve is
 convenient.
 
-![Google Curve Graphic](images/google-curve-graphic.png)
+![Curve Graph by Google](screenshots/curve-graph-by-google.png)
 
 Notice that, this describes the motion of a particle in one dimension, so our
 independent variable is time and, our image is the vertical position of the
@@ -68,7 +68,7 @@ language of everything. I'll give you a bonus next, it is the velocity
 Drawing various derivatives is what I used to do when passing Calculus I to have
 a clear understanding of the concepts I studied from the books.
 
-![Google Derivative Graphic](images/google-derivative-graphic.png)
+![Derivative Graph by Google](screenshots/derivative-graph-by-google.png)
 
 ## Development
 

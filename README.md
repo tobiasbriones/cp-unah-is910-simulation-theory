@@ -20,6 +20,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-This project contains third-party content available under their
-respective source, copyright, and/or license. See [NOTICE](NOTICE.md) for 
+This project contains screenshots of third-party apps. See [NOTICE](NOTICE.md) for 
 more details.

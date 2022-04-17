@@ -6,8 +6,8 @@ Copyright © 2022 Tobias Briones. All rights reserved.
 
 Licensed under the [MIT License](LICENSE).
 
-# Third-Parties
+# Screenshots
 
-The following packages contain third party content:
+The following packages contain screenshots of third-party apps:
 
-- [projectile-motion](projectile-motion/images/notice.md)
+- [projectile-motion](projectile-motion/screenshots/notice.md)
