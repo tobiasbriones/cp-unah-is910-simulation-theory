@@ -76,28 +76,6 @@ function Main() {
   };
 }
 
-function newEngine(canvasEl) {
-  return new BABYLON.Engine(canvasEl, true, {
-    preserveDrawingBuffer: true,
-    stencil: true
-  });
-}
-
-function newCamera(scene) {
-  return new BABYLON.ArcRotateCamera(
-    'camera1',
-    -Math.PI / 2,
-    1.2,
-    300,
-    new BABYLON.Vector3(0, 0, 0),
-    scene
-  );
-}
-
-function newScene(engine) {
-  return new BABYLON.Scene(engine);
-}
-
 function newState() {
   let t = 0;
   let direction = 1;
@@ -126,27 +104,7 @@ function newState() {
   };
 }
 
-function newAxes(scene) {
-  line2D('y-axis', {
-    path: [
-      new BABYLON.Vector3(OX, OY, 0),
-      new BABYLON.Vector3(OX, OY + HEIGHT, 0)
-    ],
-    width: 0.5,
-    scene
-  });
-  line2D('x-axis', {
-    path: [
-      new BABYLON.Vector3(OX, OY, 0),
-      new BABYLON.Vector3(OX + WIDTH, OY, 0)
-    ],
-    width: 0.5,
-    scene
-  });
-}
-
 function newCurve(scene) {
-  // Domain from 0 to 4
   const steps = 40;
   const axisStep = WIDTH / steps;
 
@@ -168,16 +126,35 @@ function newCurve(scene) {
 }
 
 function newSphere(scene, state) {
-  const i = state.pos();
-  const x = toDomain(i);
-  const y = evalFn(x);
+  const pos = state.pos();
+  const t = toDomain(pos);
+  const y = evalFn(t);
   const mesh = new BABYLON.MeshBuilder.CreateCapsule(
     'capsule',
     { radius: 4 },
     scene
   );
-  mesh.position = new BABYLON.Vector3(OX + i, OY + toPixels(y), 0);
+  mesh.position = new BABYLON.Vector3(OX + pos, OY + toPixels(y), 0);
   return mesh;
+}
+
+function newAxes(scene) {
+  line2D('y-axis', {
+    path: [
+      new BABYLON.Vector3(OX, OY, 0),
+      new BABYLON.Vector3(OX, OY + HEIGHT, 0)
+    ],
+    width: 0.5,
+    scene
+  });
+  line2D('x-axis', {
+    path: [
+      new BABYLON.Vector3(OX, OY, 0),
+      new BABYLON.Vector3(OX + WIDTH, OY, 0)
+    ],
+    width: 0.5,
+    scene
+  });
 }
 
 function evalFn(x) {
@@ -190,4 +167,26 @@ function toDomain(i) {
 
 function toPixels(w) {
   return (w / TY_MAX) * WIDTH;
+}
+
+function newEngine(canvasEl) {
+  return new BABYLON.Engine(canvasEl, true, {
+    preserveDrawingBuffer: true,
+    stencil: true
+  });
+}
+
+function newCamera(scene) {
+  return new BABYLON.ArcRotateCamera(
+    'camera1',
+    -Math.PI / 2,
+    1.2,
+    300,
+    new BABYLON.Vector3(0, 0, 0),
+    scene
+  );
+}
+
+function newScene(engine) {
+  return new BABYLON.Scene(engine);
 }
