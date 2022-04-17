@@ -70,3 +70,8 @@ a clear understanding of the concepts I studied from the books.
 
 ![Google Derivative Graphic](images/google-derivative-graphic.png)
 
+## Development
+
+The development consists of using Babylon.js to render a game loop that will
+simulate a motion described by our equation. As stated, time will be the x-axis
+and position the y-axis.
