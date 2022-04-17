@@ -34,3 +34,39 @@ a plane, we get the following shape:
 $$ x(t) = t, y(t) = -\frac{1}{2}gt^2$$
 
 Thus, our motion equation describes a parabola or quadratic equation.
+
+### Our Motion
+
+I have selected a good quadratic equation that can be plotted into the 2D-plane.
+If you pay close attention, it is easy to get an equation like this:
+
+$$ f(t) = -(t - 2)^2 + 4 $$
+
+That intercepts the axes at the origin, and describes the desired behaviour.
+Recall that $$y(t)$$ is negative so the curve is concave down, and to get the
+particle motion we need an initial speed.
+
+$$ f'(t) = 4 -2t $$
+
+Clearly, the curve intercepts at the origin, and the maximum point is at
+$$t=2$$. The other axis interception is at $$t = 4$$, so our curve is
+convenient.
+
+![Google Curve Graphic](images/google-curve-graphic.png)
+
+Notice that, this describes the motion of a particle in one dimension, so our
+independent variable is time and, our image is the vertical position of the
+particle. This is because the $$\hat{j}$$ component of the position equation was
+taken. The constant $$4$$ comes from the initial speed.
+
+As elaborated above, I started from the acceleration vector and inferred the
+equations that are to be useful for solving this problem. That's how I used to
+have the best grades at school, whilst others just trust on formulas, or the
+so-called "golden rules". It's crucial to understand math, as math is the
+language of everything. I'll give you a bonus next, it is the velocity
+(or derivative) and you must be able to relate it to the position function.
+Drawing various derivatives is what I used to do when passing Calculus I to have
+a clear understanding of the concepts I studied from the books.
+
+![Google Derivative Graphic](images/google-derivative-graphic.png)
+
