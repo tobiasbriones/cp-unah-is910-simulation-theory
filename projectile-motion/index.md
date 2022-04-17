@@ -168,3 +168,38 @@ This provides an initial framework to start developing the game. This starting
 point is taken from the other entries from this course project, such
 as [Babylon Cubes](../babylon-cubes) or
 [Random Babylon dice](../random-babylon-dice).
+
+### Draw the Axes
+
+I have recently done this in the Repsymo MRM implementation for drawing the
+solutions-tree under a xy-plane. I used the bare HTML5 Canvas element, and will
+leave the article in the resources section, I highly recommend reading as it
+is (my first) first-class entry.
+
+Add the following function to draw the axes:
+
+**index.js `Add function newAxes`**
+
+```js
+function newAxes(scene) {
+  line2D('y-axis', {
+    path: [
+      new BABYLON.Vector3(OX, OY, 0),
+      new BABYLON.Vector3(OX, OY + HEIGHT, 0)
+    ],
+    width: 0.5,
+    scene
+  });
+  line2D('x-axis', {
+    path: [
+      new BABYLON.Vector3(OX, OY, 0),
+      new BABYLON.Vector3(OX + WIDTH, OY, 0)
+    ],
+    width: 0.5,
+    scene
+  });
+}
+```
+
+The `line2D` function comes from the `lib.js` file that was added to the 
+project from the [Babylon.js Docs](https://doc.babylonjs.com/toolsAndResources/utilities/Line2D).
