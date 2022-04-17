@@ -25,6 +25,8 @@ function Main() {
   let engine;
   let scene;
   let camera;
+  let lastMesh;
+  const state = newState();
   const initCamera = (canvasEl) => {
     camera.setTarget(BABYLON.Vector3.Zero());
     camera.attachControl(canvasEl, true);
@@ -43,9 +45,17 @@ function Main() {
     newAxes(scene);
     newCurve(scene);
   };
+  const draw = () => {
+    if (lastMesh) {
+      lastMesh.dispose();
+    }
+    lastMesh = newSphere(scene, state);
+    state.nextTick();
+  };
   const runRenderLoop = () => {
     engine.runRenderLoop(() => {
       scene.render();
+      draw();
     });
   };
 
@@ -88,6 +98,34 @@ function newScene(engine) {
   return new BABYLON.Scene(engine);
 }
 
+function newState() {
+  let t = 0;
+  let direction = 1;
+  let time = performance.now();
+  return {
+    pos() {
+      return toPixels(t);
+    },
+    nextTick() {
+      const newTime = performance.now();
+      const deltaSec = (newTime - time) / 1000;
+      t += direction * deltaSec;
+      time = newTime;
+
+      if (t < 0 || t > TY_MAX) {
+        direction *= -1;
+
+        if (t < 0) {
+          t = 0;
+        }
+        else if (t > TY_MAX) {
+          t = TY_MAX;
+        }
+      }
+    }
+  };
+}
+
 function newAxes(scene) {
   line2D('y-axis', {
     path: [
@@ -127,6 +165,19 @@ function newCurve(scene) {
       scene
     });
   }
+}
+
+function newSphere(scene, state) {
+  const i = state.pos();
+  const x = toDomain(i);
+  const y = evalFn(x);
+  const mesh = new BABYLON.MeshBuilder.CreateCapsule(
+    'capsule',
+    { radius: 4 },
+    scene
+  );
+  mesh.position = new BABYLON.Vector3(OX + i, OY + toPixels(y), 0);
+  return mesh;
 }
 
 function evalFn(x) {
