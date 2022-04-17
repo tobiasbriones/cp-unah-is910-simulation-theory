@@ -38,6 +38,9 @@ function Main() {
     light.intensity = 0.7;
     scene.clearColor = new BABYLON.Color3(0.9, 0.9, 0.9);
   };
+  const baseDraw = () => {
+    newAxes(scene);
+  };
   const runRenderLoop = () => {
     engine.runRenderLoop(() => {
       scene.render();
@@ -53,6 +56,7 @@ function Main() {
       initCamera(canvasEl);
       initLight();
       runRenderLoop();
+      baseDraw();
       window.addEventListener('resize', () => {
         engine.resize();
       });
@@ -80,4 +84,23 @@ function newCamera(scene) {
 
 function newScene(engine) {
   return new BABYLON.Scene(engine);
+}
+
+function newAxes(scene) {
+  line2D('y-axis', {
+    path: [
+      new BABYLON.Vector3(OX, OY, 0),
+      new BABYLON.Vector3(OX, OY + HEIGHT, 0)
+    ],
+    width: 0.5,
+    scene
+  });
+  line2D('x-axis', {
+    path: [
+      new BABYLON.Vector3(OX, OY, 0),
+      new BABYLON.Vector3(OX + WIDTH, OY, 0)
+    ],
+    width: 0.5,
+    scene
+  });
 }
