@@ -169,6 +169,8 @@ point is taken from the other entries from this course project, such
 as [Babylon Cubes](../babylon-cubes) or
 [Random Babylon dice](../random-babylon-dice).
 
+The width and height constants will define the physical size of the axes.
+
 ### Draw the Axes
 
 I have recently done this in the Repsymo MRM implementation for drawing the
@@ -203,3 +205,49 @@ function newAxes(scene) {
 
 The `line2D` function comes from the `lib.js` file that was added to the 
 project from the [Babylon.js Docs](https://doc.babylonjs.com/toolsAndResources/utilities/Line2D).
+
+### Draw the Curve
+
+This will draw the positive side of the curve as a dashed curve using sloped 
+lines.
+
+First, define the function:
+
+**index.js `Add function evalFn`**
+
+```js
+function evalFn(x) {
+  return -Math.pow(x - 2, 2) + 4;
+}
+```
+
+Now, add the following logic:
+
+**index.js `Add function newCurve`**
+
+```js
+function newCurve(scene) {
+  // Domain from 0 to 4
+  const xyMax = 4;
+  const steps = 40;
+  const axisStep = WIDTH / steps;
+  const toDomain = (i) => (i / WIDTH) * xyMax;
+  const toPixels = (w) => (w * WIDTH) / xyMax;
+
+  for (let i = 0; i < WIDTH; i += axisStep) {
+    const x = toDomain(i);
+    const y = evalFn(x);
+    const xEnd = toDomain(i + axisStep / 2);
+    const yEnd = evalFn(xEnd);
+
+    line2D(`step-${i}`, {
+      path: [
+        new BABYLON.Vector3(OX + i, OY + toPixels(y), 0),
+        new BABYLON.Vector3(OX + toPixels(xEnd), OY + toPixels(yEnd), 0),
+      ],
+      width: 0.5,
+      scene,
+    });
+  }
+}
+```

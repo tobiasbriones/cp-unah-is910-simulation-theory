@@ -40,6 +40,7 @@ function Main() {
   };
   const baseDraw = () => {
     newAxes(scene);
+    newCurve(scene);
   };
   const runRenderLoop = () => {
     engine.runRenderLoop(() => {
@@ -103,4 +104,33 @@ function newAxes(scene) {
     width: 0.5,
     scene
   });
+}
+
+function newCurve(scene) {
+  // Domain from 0 to 4
+  const xyMax = 4;
+  const steps = 40;
+  const axisStep = WIDTH / steps;
+  const toDomain = (i) => (i / WIDTH) * xyMax;
+  const toPixels = (w) => (w * WIDTH) / xyMax;
+
+  for (let i = 0; i < WIDTH; i += axisStep) {
+    const x = toDomain(i);
+    const y = evalFn(x);
+    const xEnd = toDomain(i + axisStep / 2);
+    const yEnd = evalFn(xEnd);
+
+    line2D(`step-${ i }`, {
+      path: [
+        new BABYLON.Vector3(OX + i, OY + toPixels(y), 0),
+        new BABYLON.Vector3(OX + toPixels(xEnd), OY + toPixels(yEnd), 0)
+      ],
+      width: 0.5,
+      scene
+    });
+  }
+}
+
+function evalFn(x) {
+  return -Math.pow(x - 2, 2) + 4;
 }
