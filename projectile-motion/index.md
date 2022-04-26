@@ -360,7 +360,7 @@ function newState() {
 }
 ```
 
-Out public model consists of the particle position via the accessor `pos` 
+Our public model consists of the particle position via the accessor `pos` 
 returning the physical position in pixels, and the method `nextTick` to 
 update the model.
 
