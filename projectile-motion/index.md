@@ -282,3 +282,8 @@ allowing to graph each secant from the points $$ (t, f(t)), (t + step / 2, f
 (t + step / 2)) $$. These field can be the tangent line at $$ t $$ too, but that
 doesn't matter much for this exercise. The lines will be more details as more
 steps are taken.
+
+### Render the Particle
+
+This is the last part of the process consisting of drawing the motion of the
+projectile.
