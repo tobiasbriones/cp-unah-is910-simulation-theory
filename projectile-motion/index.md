@@ -1,3 +1,9 @@
+---
+title: Projectile Motion
+ogimage: https://raw.githubusercontent.com/tobiasbriones/cp-unah-is910-simulation-theory/main/projectile-motion/result.png
+description: In this exercise, a simulation of a particle in one dimensional motion is developed employing Babylon.js, and basic kinematics equations for the state model, and the quadratic curve to draw as the motion model.
+---
+
 <!--
   ~ Copyright (c) 2022 Tobias Briones. All rights reserved.
   ~ SPDX-License-Identifier: MIT
@@ -9,6 +15,15 @@
   -->
 
 # Projectile Motion
+
+Applying theoretical concepts from courses like Physics or Calculus is a
+rewarding endeavor either as a student or professional. An engineer must be
+capable of applying abstract concepts on real world problem solutions. In this
+exercise, a simulation of a particle in one dimensional motion is developed
+employing Babylon.js, and basic kinematics equations for the state model, 
+and the quadratic curve to draw as the motion model.
+
+![Result](result.png)
 
 ## Introduction
 
@@ -437,7 +452,20 @@ The result is an infinite animation like this:
 <p align="center"><strong>Projectile Simulation</strong></p>
 </figcaption>
 
+## Conclusion
+
+Babylon.js was used as a game engine to render an animation consisting of a 
+simple and accurate kinematics model to simulate the one-dimension motion of 
+a particle that looks like a sphere. Logic for the system axes and curve 
+tracing was also added to the simulation.
+
+Entry kinematics equations were noticed prior to devising the curve to simulate.
+
 ## Resources
 
 - [Live Simulation Demo](demo)
 - [Source Code \| GitHub Repository](https://github.com/tobiasbriones/cp-unah-is910-simulation-theory/tree/main/projectile-motion/demo)
+
+## Bibliography
+
+Coming soon...
