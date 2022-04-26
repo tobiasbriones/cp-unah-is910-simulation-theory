@@ -12,6 +12,7 @@ const WIDTH = 160;
 const HEIGHT = 160;
 const OX = -WIDTH / 2;
 const OY = -HEIGHT / 2;
+const TY_MAX = 4;
 
 function init() {
   const canvasEl = document.getElementById('canvas');
@@ -24,6 +25,8 @@ function Main() {
   let engine;
   let scene;
   let camera;
+  let lastMesh;
+  const state = newState();
   const initCamera = (canvasEl) => {
     camera.setTarget(BABYLON.Vector3.Zero());
     camera.attachControl(canvasEl, true);
@@ -38,9 +41,21 @@ function Main() {
     light.intensity = 0.7;
     scene.clearColor = new BABYLON.Color3(0.9, 0.9, 0.9);
   };
+  const baseDraw = () => {
+    newAxes(scene);
+    newCurve(scene);
+  };
+  const draw = () => {
+    if (lastMesh) {
+      lastMesh.dispose();
+    }
+    lastMesh = newSphere(scene, state);
+    state.nextTick();
+  };
   const runRenderLoop = () => {
     engine.runRenderLoop(() => {
       scene.render();
+      draw();
     });
   };
 
@@ -53,11 +68,105 @@ function Main() {
       initCamera(canvasEl);
       initLight();
       runRenderLoop();
+      baseDraw();
       window.addEventListener('resize', () => {
         engine.resize();
       });
     }
   };
+}
+
+function newState() {
+  let t = 0;
+  let direction = 1;
+  let time = performance.now();
+  return {
+    pos() {
+      return toPixels(t);
+    },
+    nextTick() {
+      const newTime = performance.now();
+      const deltaSec = (newTime - time) / 1000;
+      t += direction * deltaSec;
+      time = newTime;
+
+      if (t < 0 || t > TY_MAX) {
+        direction *= -1;
+
+        if (t < 0) {
+          t = 0;
+        }
+        else if (t > TY_MAX) {
+          t = TY_MAX;
+        }
+      }
+    }
+  };
+}
+
+function newCurve(scene) {
+  const steps = 40;
+  const axisStep = WIDTH / steps;
+
+  for (let i = 0; i < WIDTH; i += axisStep) {
+    const t = toDomain(i);
+    const y = evalFn(t);
+    const tEnd = toDomain(i + axisStep / 2);
+    const yEnd = evalFn(tEnd);
+
+    line2D(`step-${ i }`, {
+      path: [
+        new BABYLON.Vector3(OX + i, OY + toPixels(y), 0),
+        new BABYLON.Vector3(OX + toPixels(tEnd), OY + toPixels(yEnd), 0)
+      ],
+      width: 0.5,
+      scene
+    });
+  }
+}
+
+function newSphere(scene, state) {
+  const pos = state.pos();
+  const t = toDomain(pos);
+  const y = evalFn(t);
+  const mesh = new BABYLON.MeshBuilder.CreateCapsule(
+    'capsule',
+    { radius: 4 },
+    scene
+  );
+  mesh.position = new BABYLON.Vector3(OX + pos, OY + toPixels(y), 0);
+  return mesh;
+}
+
+function newAxes(scene) {
+  line2D('y-axis', {
+    path: [
+      new BABYLON.Vector3(OX, OY, 0),
+      new BABYLON.Vector3(OX, OY + HEIGHT, 0)
+    ],
+    width: 0.5,
+    scene
+  });
+  line2D('x-axis', {
+    path: [
+      new BABYLON.Vector3(OX, OY, 0),
+      new BABYLON.Vector3(OX + WIDTH, OY, 0)
+    ],
+    width: 0.5,
+    scene
+  });
+}
+
+function evalFn(x) {
+  return -Math.pow(x - 2, 2) + 4;
+}
+
+function toDomain(i) {
+  return (i / WIDTH) * TY_MAX;
+}
+
+function toPixels(w) {
+  return (w / TY_MAX) * WIDTH;
 }
 
 function newEngine(canvasEl) {
