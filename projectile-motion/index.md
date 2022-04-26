@@ -436,3 +436,8 @@ The result is an infinite animation like this:
 <figcaption>
 <p align="center"><strong>Projectile Simulation</strong></p>
 </figcaption>
+
+## Resources
+
+- [Live Simulation Demo](demo)
+- [Source Code \| GitHub Repository](https://github.com/tobiasbriones/cp-unah-is910-simulation-theory/tree/main/projectile-motion/demo)
