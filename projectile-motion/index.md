@@ -10,6 +10,13 @@
 
 # Projectile Motion
 
+Applying theoretical concepts from courses like Physics or Calculus is a
+rewarding endeavor either as a student or professional. An engineer must be
+capable of applying abstract concepts on real world problem solutions. In this
+exercise, a simulation of a particle in one dimensional motion is developed
+employing Babylon.js, and basic kinematics equations for the state model, 
+and the quadratic curve to draw as the motion model.
+
 ## Introduction
 
 A projectile motion from the kinematics class is described as a parabola or
