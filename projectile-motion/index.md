@@ -17,6 +17,8 @@ exercise, a simulation of a particle in one dimensional motion is developed
 employing Babylon.js, and basic kinematics equations for the state model, 
 and the quadratic curve to draw as the motion model.
 
+![Result](result.png)
+
 ## Introduction
 
 A projectile motion from the kinematics class is described as a parabola or
