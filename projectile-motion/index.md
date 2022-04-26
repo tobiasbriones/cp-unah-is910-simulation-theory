@@ -287,3 +287,30 @@ steps are taken.
 
 This is the last part of the process consisting of drawing the motion of the
 projectile.
+
+#### Draw a Sphere
+
+To draw the projectile just add the following code, and call it on the
+render function:
+
+```js
+function newSphere(scene, state) {
+  const pos = state.pos();
+  const t = toDomain(pos);
+  const y = evalFn(t);
+  const mesh = new BABYLON.MeshBuilder.CreateCapsule(
+    'capsule',
+    { radius: 4 },
+    scene
+  );
+  mesh.position = new BABYLON.Vector3(OX + pos, OY + toPixels(y), 0);
+  return mesh;
+}
+```
+
+With that, you will get a sphere. Check out the documentation for more 
+attributes for this model.
+
+We need a state object that has the information of the animation. So we get 
+the current position from the state, and transform it into a domain value 
+into the const `t`. Then just set the mesh radius, and position.
