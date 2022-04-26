@@ -25,6 +25,23 @@ and the quadratic curve to draw as the motion model.
 
 ![Result](result.png)
 
+## Contents
+
+- [Projectile Motion](#projectile-motion)
+  * [Introduction](#introduction)
+    + [Our Motion](#our-motion)
+  * [Development](#development)
+    + [Get Started](#get-started)
+    + [Draw the Axes](#draw-the-axes)
+    + [Draw the Curve](#draw-the-curve)
+    + [Render the Particle](#render-the-particle)
+      - [Draw a Sphere](#draw-a-sphere)
+      - [Design the Animation State](#design-the-animation-state)
+  * [Result](#result)
+  * [Conclusion](#conclusion)
+  * [Resources](#resources)
+  * [Bibliography](#bibliography)
+
 ## Introduction
 
 A projectile motion from the kinematics class is described as a parabola or
