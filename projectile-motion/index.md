@@ -437,6 +437,15 @@ The result is an infinite animation like this:
 <p align="center"><strong>Projectile Simulation</strong></p>
 </figcaption>
 
+## Conclusion
+
+Babylon.js was used as a game engine to render an animation consisting of a 
+simple and accurate kinematics model to simulate the one-dimension motion of 
+a particle that looks like a sphere. Logic for the system axes and curve 
+tracing was also added to the simulation.
+
+Entry kinematics equations were noticed prior to devising the curve to simulate.
+
 ## Resources
 
 - [Live Simulation Demo](demo)
