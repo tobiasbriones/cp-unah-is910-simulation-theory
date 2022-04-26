@@ -457,3 +457,7 @@ Entry kinematics equations were noticed prior to devising the curve to simulate.
 
 - [Live Simulation Demo](demo)
 - [Source Code \| GitHub Repository](https://github.com/tobiasbriones/cp-unah-is910-simulation-theory/tree/main/projectile-motion/demo)
+
+## Bibliography
+
+Coming soon...
