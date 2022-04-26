@@ -314,3 +314,53 @@ attributes for this model.
 We need a state object that has the information of the animation. So we get 
 the current position from the state, and transform it into a domain value 
 into the const `t`. Then just set the mesh radius, and position.
+
+#### Design the Animation State
+
+This object will contain the main logic of the animation, or simulation. Add 
+the following function to complete the above code:
+
+```js
+
+function newState() {
+  let t = 0;
+  let direction = 1;
+  let time = performance.now();
+  return {
+    pos() {
+      return toPixels(t);
+    },
+    nextTick() {
+      const newTime = performance.now();
+      const deltaSec = (newTime - time) / 1000;
+      t += direction * deltaSec;
+      time = newTime;
+
+      if (t < 0 || t > TY_MAX) {
+        direction *= -1;
+
+        if (t < 0) {
+          t = 0;
+        }
+        else if (t > TY_MAX) {
+          t = TY_MAX;
+        }
+      }
+    }
+  };
+}
+```
+
+Out public model consists of the particle position via the accessor `pos` 
+returning the physical position in pixels, and the method `nextTick` to 
+update the model.
+
+We use the `performance` standard API for benchmarking to get the delta 
+times between ticks. Since time is the independent variable of our original 
+function, this is exactly what we want as the domain value (the delta time 
+plus the accumulated time).
+
+Then just add some logic to determine the direction of the projectile or 
+sphere, minus one or plus one. You should also address the case when `t` 
+gets out of bound as I had a problem that got the sphere stuck on the bottom 
+after a while.
