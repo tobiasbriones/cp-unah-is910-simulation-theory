@@ -364,3 +364,75 @@ Then just add some logic to determine the direction of the projectile or
 sphere, minus one or plus one. You should also address the case when `t` 
 gets out of bound as I had a problem that got the sphere stuck on the bottom 
 after a while.
+
+## Result
+
+After developing the underlying models, and state, the `Main` function will 
+look like the following:
+
+```js
+function Main() {
+  let engine;
+  let scene;
+  let camera;
+  let lastMesh;
+  const state = newState();
+  const initCamera = (canvasEl) => {
+    camera.setTarget(BABYLON.Vector3.Zero());
+    camera.attachControl(canvasEl, true);
+  };
+  const initLight = () => {
+    const light = new BABYLON.HemisphericLight(
+      'light1',
+      new BABYLON.Vector3(OX + WIDTH / 2, OY + HEIGHT / 2, 0),
+      scene
+    );
+    light.groundColor = new BABYLON.Color3(0, 0, 0);
+    light.intensity = 0.7;
+    scene.clearColor = new BABYLON.Color3(0.9, 0.9, 0.9);
+  };
+  const baseDraw = () => {
+    newAxes(scene);
+    newCurve(scene);
+  };
+  const draw = () => {
+    if (lastMesh) {
+      lastMesh.dispose();
+    }
+    lastMesh = newSphere(scene, state);
+    state.nextTick();
+  };
+  const runRenderLoop = () => {
+    engine.runRenderLoop(() => {
+      scene.render();
+      draw();
+    });
+  };
+
+  return {
+    init(canvasEl) {
+      engine = newEngine(canvasEl);
+      scene = newScene(engine);
+      camera = newCamera(scene, canvasEl);
+
+      initCamera(canvasEl);
+      initLight();
+      runRenderLoop();
+      baseDraw();
+      window.addEventListener('resize', () => {
+        engine.resize();
+      });
+    }
+  };
+}
+```
+
+That gives enough high-level insight on what is going on.
+
+The result is an infinite animation like this:
+
+![Projectile Simulation](https://github.com/tobiasbriones/cp-unah-is910-simulation-theory/releases/download/v2022.04.25/projectile-simulation.gif)
+
+<figcaption>
+<p align="center"><strong>Projectile Simulation</strong></p>
+</figcaption>
