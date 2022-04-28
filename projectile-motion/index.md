@@ -14,8 +14,8 @@ Applying theoretical concepts from courses like Physics or Calculus is a
 rewarding endeavor either as a student or professional. An engineer must be
 capable of applying abstract concepts on real world problem solutions. In this
 exercise, a simulation of a particle in one dimensional motion is developed
-employing Babylon.js, and basic kinematics equations for the state model, 
-and the quadratic curve to draw as the motion model.
+employing Babylon.js, and basic kinematics equations for the state model, and
+the quadratic curve to draw as the motion model.
 
 ![Result](result.png)
 
@@ -299,8 +299,8 @@ projectile.
 
 #### Draw a Sphere
 
-To draw the projectile just add the following code, and call it on the
-render function:
+To draw the projectile just add the following code, and call it on the render
+function:
 
 ```js
 function newSphere(scene, state) {
@@ -317,17 +317,17 @@ function newSphere(scene, state) {
 }
 ```
 
-With that, you will get a sphere. Check out the documentation for more 
+With that, you will get a sphere. Check out the documentation for more
 attributes for this model.
 
-We need a state object that has the information of the animation. So we get 
-the current position from the state, and transform it into a domain value 
-into the const `t`. Then just set the mesh radius, and position.
+We need a state object that has the information of the animation. So we get the
+current position from the state, and transform it into a domain value into the
+const `t`. Then just set the mesh radius, and position.
 
 #### Design the Animation State
 
-This object will contain the main logic of the animation, or simulation. Add 
-the following function to complete the above code:
+This object will contain the main logic of the animation, or simulation. Add the
+following function to complete the above code:
 
 ```js
 
@@ -360,24 +360,24 @@ function newState() {
 }
 ```
 
-Our public model consists of the particle position via the accessor `pos` 
-returning the physical position in pixels, and the method `nextTick` to 
-update the model.
+Our public model consists of the particle position via the accessor `pos`
+returning the physical position in pixels, and the method `nextTick` to update
+the model.
 
-We use the `performance` standard API for benchmarking to get the delta 
-times between ticks. Since time is the independent variable of our original 
-function, this is exactly what we want as the domain value (the delta time 
-plus the accumulated time).
+We use the `performance` standard API for benchmarking to get the delta times
+between ticks. Since time is the independent variable of our original function,
+this is exactly what we want as the domain value (the delta time plus the
+accumulated time).
 
-Then just add some logic to determine the direction of the projectile or 
-sphere, minus one or plus one. You should also address the case when `t` 
-gets out of bound as I had a problem that got the sphere stuck on the bottom 
+Then just add some logic to determine the direction of the projectile or sphere,
+minus one or plus one. You should also address the case when `t`
+gets out of bound as I had a problem that got the sphere stuck on the bottom
 after a while.
 
 ## Result
 
-After developing the underlying models, and state, the `Main` function will 
-look like the following:
+After developing the underlying models, and state, the `Main` function will look
+like the following:
 
 ```js
 function Main() {
@@ -448,10 +448,10 @@ The result is an infinite animation like this:
 
 ## Conclusion
 
-Babylon.js was used as a game engine to render an animation consisting of a 
-simple and accurate kinematics model to simulate the one-dimension motion of 
-a particle that looks like a sphere. Logic for the system axes and curve 
-tracing was also added to the simulation.
+Babylon.js was used as a game engine to render an animation consisting of a
+simple and accurate kinematics model to simulate the one-dimension motion of a
+particle that looks like a sphere. Logic for the system axes and curve tracing
+was also added to the simulation.
 
 Entry kinematics equations were noticed prior to devising the curve to simulate.
 
