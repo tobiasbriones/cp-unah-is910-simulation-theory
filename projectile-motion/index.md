@@ -460,6 +460,32 @@ Entry kinematics equations were noticed prior to devising the curve to simulate.
 - [Live Simulation Demo](demo)
 - [Source Code \| GitHub Repository](https://github.com/tobiasbriones/cp-unah-is910-simulation-theory/tree/main/projectile-motion/demo)
 
+### Video Presentation
+
+I recorded a video where I addressed the following:
+
+- Course Project overview on Babylon.js.
+- Getting started on the project structure.
+- Drawing the axes.
+- BONUS: Overview of how these kinds of drawings can be used, e.g. Repsymo MRM
+  case study.
+- How to choose a good motion model for this project from the equations.
+- Get it done.
+
+It was supposed to be a 20 minutes video, but it got long. I was getting
+exhausted, so I hope is useful. I also forgot to enable the mouse cursor, so it
+might be weird sometimes.
+
+<iframe 
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/8LYegmroT9Q" 
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+
 ## Bibliography
 
 Coming soon...
