@@ -485,4 +485,9 @@ Entry kinematics equations were noticed prior to devising the curve to simulate.
 
 ## Bibliography
 
-Coming soon...
+- [Babylon Cubes \| CP: Simulation Theory](https://dev.mathsoftware.engineer/cp-unah-is910-simulation-theory/babylon-cubes)
+- [Random Babylon Dice \| CP: Simulation Theory](https://dev.mathsoftware.engineer/cp-unah-is910-simulation-theory/random-babylon-dice)
+- [Draw a Line With a Set Width \| Babylon.js Documentation](https://doc.babylonjs.com/toolsAndResources/utilities/Line2D)
+- [Creating A Sphere \| Babylon.js Documentation](https://doc.babylonjs.com/divingDeeper/mesh/creation/set/sphere)
+- [performance.now() - Web APIs \| MDN](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now)
+
