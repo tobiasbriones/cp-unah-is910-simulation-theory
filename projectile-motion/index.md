@@ -322,8 +322,8 @@ projectile.
 
 #### Draw a Sphere
 
-To draw the projectile just add the following code, and call it on the
-render function:
+To draw the projectile just add the following code, and call it on the render
+function:
 
 ```js
 function newSphere(scene, state) {
@@ -340,17 +340,17 @@ function newSphere(scene, state) {
 }
 ```
 
-With that, you will get a sphere. Check out the documentation for more 
+With that, you will get a sphere. Check out the documentation for more
 attributes for this model.
 
-We need a state object that has the information of the animation. So we get 
-the current position from the state, and transform it into a domain value 
-into the const `t`. Then just set the mesh radius, and position.
+We need a state object that has the information of the animation. So we get the
+current position from the state, and transform it into a domain value into the
+const `t`. Then just set the mesh radius, and position.
 
 #### Design the Animation State
 
-This object will contain the main logic of the animation, or simulation. Add 
-the following function to complete the above code:
+This object will contain the main logic of the animation, or simulation. Add the
+following function to complete the above code:
 
 ```js
 
@@ -383,24 +383,24 @@ function newState() {
 }
 ```
 
-Our public model consists of the particle position via the accessor `pos` 
-returning the physical position in pixels, and the method `nextTick` to 
-update the model.
+Our public model consists of the particle position via the accessor `pos`
+returning the physical position in pixels, and the method `nextTick` to update
+the model.
 
-We use the `performance` standard API for benchmarking to get the delta 
-times between ticks. Since time is the independent variable of our original 
-function, this is exactly what we want as the domain value (the delta time 
-plus the accumulated time).
+We use the `performance` standard API for benchmarking to get the delta times
+between ticks. Since time is the independent variable of our original function,
+this is exactly what we want as the domain value (the delta time plus the
+accumulated time).
 
-Then just add some logic to determine the direction of the projectile or 
-sphere, minus one or plus one. You should also address the case when `t` 
-gets out of bound as I had a problem that got the sphere stuck on the bottom 
+Then just add some logic to determine the direction of the projectile or sphere,
+minus one or plus one. You should also address the case when `t`
+gets out of bound as I had a problem that got the sphere stuck on the bottom
 after a while.
 
 ## Result
 
-After developing the underlying models, and state, the `Main` function will 
-look like the following:
+After developing the underlying models, and state, the `Main` function will look
+like the following:
 
 ```js
 function Main() {
@@ -471,10 +471,10 @@ The result is an infinite animation like this:
 
 ## Conclusion
 
-Babylon.js was used as a game engine to render an animation consisting of a 
-simple and accurate kinematics model to simulate the one-dimension motion of 
-a particle that looks like a sphere. Logic for the system axes and curve 
-tracing was also added to the simulation.
+Babylon.js was used as a game engine to render an animation consisting of a
+simple and accurate kinematics model to simulate the one-dimension motion of a
+particle that looks like a sphere. Logic for the system axes and curve tracing
+was also added to the simulation.
 
 Entry kinematics equations were noticed prior to devising the curve to simulate.
 
@@ -483,6 +483,32 @@ Entry kinematics equations were noticed prior to devising the curve to simulate.
 - [Live Simulation Demo](demo)
 - [Source Code \| GitHub Repository](https://github.com/tobiasbriones/cp-unah-is910-simulation-theory/tree/main/projectile-motion/demo)
 
+### Video Presentation
+
+I recorded a video where I addressed the following:
+
+- Course Project overview on Babylon.js.
+- Getting started on the project structure.
+- Drawing the axes.
+- BONUS: Overview of how these kinds of drawings can be used, e.g. Repsymo MRM
+  case study.
+- How to choose a good motion model for this project from the equations.
+- Get it done.
+
+It was supposed to be a 20 minutes video, but it got long. I was getting
+exhausted, so I hope is useful. I also forgot to enable the mouse cursor, so it
+might be weird sometimes.
+
+<iframe 
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/8LYegmroT9Q" 
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+
 ## Bibliography
 
 - [Babylon Cubes \| CP: Simulation Theory](https://dev.mathsoftware.engineer/cp-unah-is910-simulation-theory/babylon-cubes)
@@ -490,4 +516,3 @@ Entry kinematics equations were noticed prior to devising the curve to simulate.
 - [Draw a Line With a Set Width \| Babylon.js Documentation](https://doc.babylonjs.com/toolsAndResources/utilities/Line2D)
 - [Creating A Sphere \| Babylon.js Documentation](https://doc.babylonjs.com/divingDeeper/mesh/creation/set/sphere)
 - [performance.now() - Web APIs \| MDN](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now)
-
